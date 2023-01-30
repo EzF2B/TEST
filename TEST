@@ -120,7 +120,17 @@ task.spawn(function()
 		end)
 	end
 end)
-  
+_G.ShowUp = false --// Shows the gui above (Useful for games like TPT2)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Empire4946/roblox-gpu-saverBETTER/main/handler/main.txt"))()
+local FPS = 25
+local clock = tick()
+
+while true do
+    while clock + 1 / FPS > tick() do end
+    wait()
+    clock = tick()
+end
   --Variables
 local unclaimed = {}
 local counter = 0

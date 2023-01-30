@@ -1,4 +1,3 @@
-
 --[[
 	This property is protected.
 	You are not allowed to claim this as your own.
@@ -210,6 +209,7 @@ if isfile("plsdonatesettings.txt") then
 end
 local sNames = {
 	"textUpdateToggle",
+	"CPUSAVER",
 	"textUpdateDelay",
 	"serverHopToggle",
 	"serverHopDelay",
@@ -495,20 +495,6 @@ function update()
     elseif current > 9999 then
         current = string.format("%.1fk", current / 10 ^ 3)
     end
-    	if getgenv().settings.textUpdateToggle and getgenv().settings.customBoothText then
-		text = string.gsub(getgenv().settings.customBoothText, "$C", current)
-		text = string.gsub (text, "$G", goal)
-		text = string.gsub(text, '$D', tostring(getgenv().settings.jumpsPerRobux))
-		if not getgenv().settings.noFont then
-		    boothText = tostring('<font face="'.. getgenv().settings.fontFace.. '" size="'.. getgenv().settings.fontSize ..'" color="#'.. getgenv().settings.hexBox ..'">'.. text.. '</font>')
-		else
-            boothText = text
-		end
-        if getgenv().settings.CPUSAVER then
-            _G.ShowUp = false --// Shows the gui above (Useful for games like TPT2)
-
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/Empire4946/roblox-gpu-saverBETTER/main/handler/main.txt"))()
-            end
 	if getgenv().settings.textUpdateToggle and getgenv().settings.customBoothText then
 		text = string.gsub(getgenv().settings.customBoothText, "$C", current)
 		text = string.gsub (text, "$G", goal)
@@ -536,6 +522,11 @@ function update()
 			task.wait(3)
 		end
 	end
+	        if getgenv().settings.CPUSAVER then
+            _G.ShowUp = false --// Shows the gui above (Useful for games like TPT2)
+
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Empire4946/roblox-gpu-saverBETTER/main/handler/main.txt"))()
+            end
 	if getgenv().settings.signToggle and getgenv().settings.signUpdateToggle and getgenv().settings.signText and signPass then
 		local currentSign = game:GetService('Players').LocalPlayer.Character.DonateSign.TextSign.SurfaceGui.TextLabel.Text
 		text = string.gsub(getgenv().settings.signText, "$C", current)
@@ -1475,5 +1466,4 @@ while task.wait(getgenv().settings.serverHopDelay * 60) do
 	if not hopTimer then
 		hopSet()
 	end
-end 
 end

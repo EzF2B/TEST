@@ -1475,4 +1475,5 @@ while task.wait(getgenv().settings.serverHopDelay * 60) do
 	if not hopTimer then
 		hopSet()
 	end
+end 
 end

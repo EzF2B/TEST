@@ -1323,7 +1323,7 @@ local fpsBoosts = otherTab:AddSwitch('CPU Saver', function(bool)
 	getgenv().settings.fpsBoost = bool
 	saveSettings()
 	task.spawn(function()
-		task.wait(3)
+		wait(10)
 		if getgenv().settings.fpsBoost then
             for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui:GetChildren()) do
                 if v.Name == "PromptWearLastOutfit" then
